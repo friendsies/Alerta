@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Alerta</string>
+    <string name="Username_String">Username</string>
+    <string name="Password_String">Password</string>
+    <string name="Login_String">Log In</string>
+    <string name="Signup_String">Sign Up</string>
+    <string name="Email_String">Email Address</string>
+    <string name="Signup_Error_Message">Did you leave one of the fields blank?  Make sure.</string>
+    <string name="Signup_Error_title">Oops!</string>
+    <string name="Login_Error_Message">Did you leave one of the fields blank?  Make sure.</string>
+    <string name="Login_Error_title">Oops!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_logout">Log Out</string>
+    <string name="drawer_opened">Open</string>
+    <string name="drawer_closed">Closed</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
