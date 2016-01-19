@@ -29,7 +29,7 @@ public class Fragment1 extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment1, container, false);
         mWebView= (WebView) rootView.findViewById(R.id.webView);
         mWebView.setWebChromeClient(new WebChromeClient());
-        mWebView.loadUrl("http://localhost:8000/android_assets");
+        mWebView.loadUrl("file:///android_asset/www/map.html");
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setAppCacheEnabled(true);
