@@ -19,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         listSliding = new ArrayList<>();
         //add item for sliding list
-        listSliding. add(new ItemSlideMenu(R.drawable.ic_action_settings, "Settings"));
+        listSliding. add(new ItemSlideMenu(R.drawable.ic_action_settings, "Map"));
         listSliding.add(new ItemSlideMenu(R.drawable.ic_action_about, "About"));
         listSliding.add(new ItemSlideMenu(R.drawable.ic_logout_black_48dp, "Log Out"));
         adapter = new SlidingMenuAdapter(this, listSliding);
@@ -78,8 +79,6 @@ public class MainActivity extends AppCompatActivity {
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //set title
-        setTitle(listSliding.get(0).getTitle());
         //item selected
         listViewSliding.setItemChecked(0, true);
         //close menu
@@ -88,12 +87,18 @@ public class MainActivity extends AppCompatActivity {
         listViewSliding.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //set title
-                setTitle(listSliding.get(position).getTitle());
-                //item selected
-                listViewSliding.setItemChecked(position, true);
-                //close menu
-                drawerLayout.closeDrawer(listViewSliding);
+                if (position == 2) {
+                    ParseUser.logOut();
+                    navigateToLogin();
+                } else {
+
+                    //replace fragment
+                    replaceFragment(position);
+                    //item selected
+                    listViewSliding.setItemChecked(position, true);
+                    //close menu
+                    drawerLayout.closeDrawer(listViewSliding);
+                }
             }
 
         });
@@ -151,17 +156,14 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
     }
 //create method replace fragment
-    private void replaceFragment(int pos) {
+    private void replaceFragment(int position) {
         android.support.v4.app.Fragment fragment = null;
-        switch (pos) {
+        switch (position) {
             case 0:
                 fragment = new Fragment1();
                     break;
             case 1:
                 fragment = new Fragment2();
-                break;
-            case 2:
-                fragment = new Fragment3();
                 break;
             default:
                 fragment = new Fragment1();

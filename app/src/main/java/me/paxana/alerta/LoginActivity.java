@@ -9,6 +9,7 @@
     import android.widget.Button;
     import android.widget.EditText;
     import android.widget.TextView;
+    import android.widget.Toolbar;
 
     import com.parse.LogInCallback;
     import com.parse.ParseException;
@@ -20,17 +21,25 @@
     import butterknife.OnClick;
 
     public class LoginActivity extends AppCompatActivity {
+        private android.support.v7.widget.Toolbar mToolBar;
         @Bind(R.id.usernameField) EditText mUsername;
         @Bind(R.id.passwordField) EditText mPassword;
         @Bind(R.id.loginButton) Button mLoginButton;
         @Bind(R.id.signupButton) TextView mSignupButton;
-
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
             ButterKnife.bind(this);
+
+            //create the toolbar
+            mToolBar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(mToolBar);
+            assert getSupportActionBar() != null;
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
             mLoginButton.setOnClickListener(new View.OnClickListener() {
                 @Override
