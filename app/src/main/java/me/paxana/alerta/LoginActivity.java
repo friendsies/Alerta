@@ -6,6 +6,7 @@
     import android.support.v7.app.AppCompatActivity;
     import android.os.Bundle;
     import android.view.View;
+    import android.view.Window;
     import android.widget.Button;
     import android.widget.EditText;
     import android.widget.TextView;
@@ -58,6 +59,7 @@
                         AlertDialog dialog = builder.create();
                         dialog.show();}
                     else { //if every field is accounted for, log in.
+
                         ParseUser.logInInBackground(username, password, new LogInCallback() {
                             @Override
                             public void done(ParseUser user, ParseException e) {

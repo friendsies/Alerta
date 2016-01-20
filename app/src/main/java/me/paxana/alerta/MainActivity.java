@@ -47,11 +47,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         ParseUser currentUser = ParseUser.getCurrentUser();
-             if (currentUser == null) {
-                navigateToLogin();
+            //check to see if user is logged in
+            if (currentUser == null) {
+                navigateToLogin();  //if not, send them to the login page
             }
 
-        else {
+        else {  //if they are, send the username to the log (debug only)
                 Log.i(TAG, currentUser.getUsername());
             }
 
@@ -60,8 +61,10 @@ public class MainActivity extends AppCompatActivity {
         listSliding = new ArrayList<>();
         //add item for sliding list
         listSliding. add(new ItemSlideMenu(R.drawable.ic_action_settings, "Map"));
-        listSliding.add(new ItemSlideMenu(R.drawable.ic_action_about, "About"));
+        listSliding.add(new ItemSlideMenu(R.drawable.ic_action_about, "Emergency Call"));
+        listSliding.add(new ItemSlideMenu(R.drawable.ic_account_plus_black_48dp, "Friends"));
         listSliding.add(new ItemSlideMenu(R.drawable.ic_logout_black_48dp, "Log Out"));
+
         adapter = new SlidingMenuAdapter(this, listSliding);
         listViewSliding.setAdapter(adapter);
 
@@ -77,10 +80,11 @@ public class MainActivity extends AppCompatActivity {
         //close menu
         drawerLayout.closeDrawer(listViewSliding);
         //handle on item click
+        //at some point it may make sense to change this to sort by item ID instead of position
         listViewSliding.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 2) {
+                if (position == 3) {
                     ParseUser.logOut();
                     navigateToLogin();
                 } else {
@@ -119,28 +123,6 @@ public class MainActivity extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(actionBarDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-
-        int itemId = item.getItemId();
-        if (itemId == R.id.action_logout) {
-            ParseUser.logOut();
-            navigateToLogin();
-
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
