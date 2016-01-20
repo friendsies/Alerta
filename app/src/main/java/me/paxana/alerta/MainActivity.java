@@ -60,14 +60,13 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         listSliding = new ArrayList<>();
         //add item for sliding list
-        listSliding. add(new ItemSlideMenu(R.drawable.ic_action_settings, "Map"));
+        listSliding.add(new ItemSlideMenu(R.drawable.ic_action_settings, "Map"));
         listSliding.add(new ItemSlideMenu(R.drawable.ic_action_about, "Emergency Call"));
         listSliding.add(new ItemSlideMenu(R.drawable.ic_account_plus_black_48dp, "Friends"));
         listSliding.add(new ItemSlideMenu(R.drawable.ic_logout_black_48dp, "Log Out"));
 
         adapter = new SlidingMenuAdapter(this, listSliding);
         listViewSliding.setAdapter(adapter);
-
 
         //display icon to open/close slider
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -139,6 +138,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
             case 1:
                 fragment = new Fragment2();
+                break;
+            case 2:
+                fragment = new Fragment3();
                 break;
             default:
                 fragment = new Fragment1();
