@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class SignupActivity extends AppCompatActivity {
-
+    @Bind(R.id.toolbar) android.support.v7.widget.Toolbar mToolbar;
     @Bind(R.id.usernameField) EditText mUsername;
     @Bind(R.id.passwordField) EditText mPassword;
     @Bind(R.id.emailField) EditText mEmail;
@@ -30,17 +30,23 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
         ButterKnife.bind(this);
 
+        //create the toolbar
+        mToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        assert getSupportActionBar() != null;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         mSignupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
              String username = mUsername.getText().toString();
                 String password = mPassword.getText().toString();
                 String email = mEmail.getText().toString();
-
+//delete any blank spaces at the ends of fields
                 username = username.trim();
                 password = password.trim();
                 email = email.trim();
-
+//at some point we should create an if statement that makes the username field case insensitive
                 if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
                     builder.setMessage(R.string.Signup_Error_Message)

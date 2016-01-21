@@ -1,6 +1,7 @@
 package me.paxana.alerta;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentManager;
@@ -71,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
         //display icon to open/close slider
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
+        mToolbar.setBackgroundColor(Color.DKGRAY);
+        mToolbar.setTitleTextColor(Color.BLACK);
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -119,10 +122,21 @@ public class MainActivity extends AppCompatActivity {
 
     private void navigateToLogin() {
         Intent intent = new Intent(this, LoginActivity.class);
+        //these flags remove the mainactivity from the history, so you can't back your way into mainactivity from the login screen
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {

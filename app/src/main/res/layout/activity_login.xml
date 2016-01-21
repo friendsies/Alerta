@@ -12,14 +12,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="me.paxana.alerta.LoginActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="8dp"
-        android:minHeight="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

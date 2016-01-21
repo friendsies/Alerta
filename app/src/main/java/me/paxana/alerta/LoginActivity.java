@@ -22,7 +22,7 @@
     import butterknife.OnClick;
 
     public class LoginActivity extends AppCompatActivity {
-        private android.support.v7.widget.Toolbar mToolBar;
+        @Bind(R.id.toolbar) android.support.v7.widget.Toolbar mToolbar;
         @Bind(R.id.usernameField) EditText mUsername;
         @Bind(R.id.passwordField) EditText mPassword;
         @Bind(R.id.loginButton) Button mLoginButton;
@@ -35,8 +35,8 @@
             ButterKnife.bind(this);
 
             //create the toolbar
-            mToolBar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(mToolBar);
+            mToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(mToolbar);
             assert getSupportActionBar() != null;
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
